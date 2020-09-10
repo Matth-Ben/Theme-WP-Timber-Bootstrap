@@ -1,0 +1,26 @@
+{
+  "name": "site-name",
+  "version": "1.0.0",
+  "description": "The \"_s\" for Timber: a dead-simple theme that you can build from. The primary purpose of this theme is to provide a file structure rather than a framework for markup or styles. Configure your Sass, scripts, and task runners however you would like!",
+  "main": "index.js",
+  "scripts": {
+    "build-dev": "WEBPACK_TURNKEY_PUBLIC_SUFFIX=theme/public npx webpack-turnkey --eslint --sourcemaps --watch",
+    "build-prod": "WEBPACK_TURNKEY_PUBLIC_SUFFIX=theme/public NODE_ENV=prod npx webpack-turnkey --eslint --sourcemaps",
+    "build-style": "sass assets/stylesheets/index.scss theme/public/css/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dev-name",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1",
+    "sass": "^1.26.10",
+    "webpack": "^4.44.0",
+    "webpack-turnkey": "^1.9.4"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12"
+  }
+}

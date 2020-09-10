@@ -1,0 +1,30 @@
+<div class="footer">
+    <nav class="eopur-custom-widget-footer navbar navbar-expand-lg container-fluid p-container-10 flex-column">
+        <div class="py-4 w-100 text-left">
+            <div class="row no-gutters">
+                {% for sidebar in footer.sidebars %}
+                    {% if loop.index0 == 0 %}
+                  <div class="col-12 col-md-3 col-lg-4 {% if footer.offset %}offset-lg-{{ footer.offset }}{% endif %} d-flex">
+                            <ul class="widget-img-footer mr-auto mx-md-auto">
+                                {{ sidebar|raw }}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="col-12 col-md-3 col-lg-3">
+                            <ul class="widget-text-footer">
+                                {{ sidebar|raw }}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <p class="copyright">{{ "now"|date('Y') }} © EOPUR
+            {% for item in copyright__menu.get_items %}
+                -
+                <a class="link"
+                   href="{{ item.link }}">{{ item.title }}</a>
+            {% endfor %}
+        </p>
+    </nav>
+</div>

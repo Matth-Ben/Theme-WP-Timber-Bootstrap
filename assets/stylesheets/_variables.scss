@@ -1,0 +1,31 @@
+$enable-responsive-font-sizes: true;
+$enable-rounded: true;
+
+$directions: (
+        'top',
+        'right',
+        'bottom',
+        'left'
+);
+
+$custom-file-text: (
+        en: "Browse",
+        es: "Elegir",
+        fr: "Parcourir",
+);
+
+$primary: #000000;
+
+$theme-colors: map-merge(
+    (
+        "name-primary": $primary,
+    ),
+    $theme-colors
+);
+
+$custom-border-width: 2px !default;
+$custom-border-radius: 7px !default;
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}

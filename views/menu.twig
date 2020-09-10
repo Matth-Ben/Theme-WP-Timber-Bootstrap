@@ -1,0 +1,66 @@
+{% if menu %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg" id="navbar">
+	<div class="container p-container-10 position-relative">
+		<a class="navbar-brand" href="{{ site.url }}">
+			{% if custom_logo_url %}
+				<picture>
+					<img class="w-100 h-auto" style="max-width: 210px;" alt="logo"
+						 src="{{ custom_logo_url }}"
+					>
+				</picture>
+			{% else %}
+				{{ site.title }}
+			{% endif %}
+		</a>
+		<button class="navbar-toggler x collapsed" type="button" data-toggle="collapse" data-target="#navbar-main-menu-toggle"
+				aria-controls="navbar-main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation" onclick="toggle()">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbar-main-menu-toggle">
+			<ul id="main-menu" class="navbar-nav ml-md-auto">
+				{% for item in main__menu.get_items %}
+					<li id="menu-item-{{ item.ID }}"
+						class="nav-item {% if item.children %}dropdown{% endif %} {{ item.class }}">
+	{#                        {{ dump(item.children) }}#}
+	{#                        {{ post.id }}#}
+						<a class="nav-link text-right text-md-center
+								{% if item.children %}dropdown-toggle{% endif %}
+								{% if item.current == true %}
+									active
+								{% else %}
+									{% for child in item.children %}
+										{% if post.id == child.object_id %}
+											active
+										{% endif %}
+									{% endfor %}
+								{% endif %}"
+							{% if item.children %}
+								id="navbar-main-menu-dropdown-{{ item.ID }}"
+								role="button"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							{% else %}
+								href="{{ item.url }}"
+							{% endif %}>
+							{{ item.title }}
+						</a>
+						{% if item.children %}
+							<div class="dropdown-menu" aria-labelledby="navbar-main-menu-dropdown-{{ item.ID }}">
+								{% for child in item.children %}
+									<a class="dropdown-item" href="{{ child.link }}">
+										{{ child.title }}
+									</a>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</nav>
+{% endif %}
